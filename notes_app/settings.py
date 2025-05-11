@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-e6-+ytjz0aof1c6*=-ek(+i#iv39*+1h_a^v=qkkoaght-uyj@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['note_app.onrender.com']
+ALLOWED_HOSTS = ['notes-app-gla1.onrender.com']
 
 
 # Application definition
