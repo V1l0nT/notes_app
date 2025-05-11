@@ -1,21 +1,27 @@
 {% extends 'main/base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
 {% block title %}
 {{ title }}
 {% endblock %}
 
 {% block content %}
-	<h1>Главная страница</h1>
-	{% if notes %}
-		{% for el in notes %}
-		    <div class="alert alert-warning mt-2">
-		        <h3>{{ el.title }}</h3>
-		        <p>{{ el.content }}</p>
-		        <a href="{% url 'note_edit' el.id %}">Редактировать</a> |
-		        <a href="{% url 'note_delete' el.id %}">Удалить</a>
-		    </div>
-		{% endfor %}
-	{% else %}
-		<p>У вас нет заметок!</p>
-	{% endif %}
+    <h1>Главная страница</h1>
+    {% if notes %}
+        {% for el in notes %}
+            <div class="alert alert-warning mt-2 note-card">
+                <a href="{% url 'note_detail' el.id %}" style="text-decoration: none; color: inherit; display: block;">
+                    <h3>{{ el.title }}</h3>
+                    <p class="note-content">{{ el.content }}</p>
+                </a>
+                <div class="note-actions mt-2">
+                    <a href="{% url 'note_edit' el.id %}">Редактировать</a> |
+                    <a href="{% url 'note_delete' el.id %}">Удалить</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>У вас нет заметок!</p>
+    {% endif %}
 {% endblock %}

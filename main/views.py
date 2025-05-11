@@ -4,9 +4,15 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.db.models import Count, Q
 from django.contrib.auth.decorators import login_required
+from django.views.generic import DetailView
 
 from .forms import NoteForm, SignUpForm
 from .models import Note, Category
+
+class NoteDetailView(DetailView):
+    model = Note
+    template_name = 'main/note_detail.html'
+    context_object_name = 'note'
 
 @login_required
 def index(request):

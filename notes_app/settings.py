@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-e6-+ytjz0aof1c6*=-ek(+i#iv39*+1h_a^v=qkkoaght-uyj@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['notes-app-gla1.onrender.com']
+ALLOWED_HOSTS = ['notes-app-gla1.onrender.com', '127.0.0.1']
 
 CSRF_TRUSTED_ORIGINS = [
     "https://notes-app-gla1.onrender.com",
@@ -83,18 +83,18 @@ WSGI_APPLICATION = 'notes_app.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'notes_app',
-    #     'USER': 'postgres',
-    #     'PASSWORD': 'root',
-    #     'HOST': 'localhost',
-    # }
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL'),
-        conn_max_age=600,
-        ssl_require=True
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'notes_app',
+        'USER': 'postgres',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+    }
+    # 'default': dj_database_url.config(
+    #     default=os.environ.get('DATABASE_URL'),
+    #     conn_max_age=600,
+    #     ssl_require=True
+    # )
 }
 
 
@@ -133,6 +133,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 

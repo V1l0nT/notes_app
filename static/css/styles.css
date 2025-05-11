@@ -1,0 +1,15 @@
+<style>
+.note-content {
+    max-height: 150px;      /* Максимальная высота блока с текстом */
+    overflow: hidden;       /* Обрезать лишнее */
+    text-overflow: ellipsis; /* Добавить многоточие */
+    white-space: pre-wrap;  /* Переносить строки */
+    word-wrap: break-word;  /* Переносить слова */
+}
+.note-card {
+    cursor: pointer; /* Курсор при наведении */
+}
+.note-actions a {
+    cursor: pointer;
+}
+</style>

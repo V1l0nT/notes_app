@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{ note.title }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ note.title }}</h1>
+    <p><strong>Категория:</strong>
+	    {% if note.category %}
+	        {{ note.category.name }}
+	    {% else %}
+	        Без категории
+	    {% endif %}
+	</p>
+    <p><strong>Автор:</strong> {{ note.author.username }}</p>
+    <p><strong>Создано:</strong> {{ note.created_at }}</p>
+    <p><strong>Обновлено:</strong> {{ note.updated_at }}</p>
+    <hr>
+    <p>{{ note.content|linebreaks }}</p>
+    <a href="{% url 'note_edit' note.id %}">Редактировать</a> |
+    <a href="{% url 'note_delete' note.id %}">Удалить</a> |
+    <a href="{% url 'home' %}">Назад к списку</a>
+{% endblock %}
