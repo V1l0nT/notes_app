@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+	<h1>Главная страница</h1>
+	{% if notes %}
+		{% for el in notes %}
+		    <div class="alert alert-warning mt-2">
+		        <h3>{{ el.title }}</h3>
+		        <p>{{ el.content }}</p>
+		        <a href="{% url 'note_edit' el.id %}">Редактировать</a> |
+		        <a href="{% url 'note_delete' el.id %}">Удалить</a>
+		    </div>
+		{% endfor %}
+	{% else %}
+		<p>У вас нет заметок!</p>
+	{% endif %}
+{% endblock %}

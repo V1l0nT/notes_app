@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Заметки в категории "{{ category.name }}"{% endblock %}
+
+{% block content %}
+<h1>Заметки в категории "{{ category.name }}"</h1>
+
+<ul>
+{% for note in notes %}
+    <li>
+        <a href="{% url 'home' %}?category={{ category.id }}">{{ note.title }}</a>
+        {% if user.is_superuser %}
+            - <em>Автор: {{ note.author.username }}</em>
+        {% endif %}
+    </li>
+{% empty %}
+    <li>Заметок в этой категории нет.</li>
+{% endfor %}
+</ul>
+
+
+<a href="{% url 'category_list' %}">← Вернуться к категориям</a>
+{% endblock %}

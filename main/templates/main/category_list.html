@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Категории{% endblock %}
+
+{% block content %}
+<h1>Категории</h1>
+
+<ul>
+    {% for category in categories %}
+        <li>
+            <a href="{% url 'category_notes' category.id %}">{{ category.name }}</a>
+            ({{ category.notes_count }})
+        </li>
+    {% empty %}
+        <li>У вас нет заметок с категориями.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
