@@ -29,6 +29,9 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['notes-app-gla1.onrender.com']
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://notes-app-gla1.onrender.com",
+]
 
 # Application definition
 
